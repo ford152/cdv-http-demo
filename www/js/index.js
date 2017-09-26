@@ -15,6 +15,10 @@ const app = {
   onGetBtnClick: function () {
     const url = document.getElementById('urlInput').value;
 
+    cordova.plugin.http.acceptAllCerts(false);
+    cordova.plugin.http.validateDomainName(false);
+    cordova.plugin.http.enableSSLPinning(false);
+
     cordova.plugin.http.get(url, {}, { Host: "www.bitnrg.io" }, data => this.print(data), error => this.print(error));
   },
 
